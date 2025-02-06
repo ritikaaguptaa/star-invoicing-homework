@@ -1,3 +1,11 @@
+## Recommendation
+
+1. Read Peewee docs
+2. Read Flask docs
+3. Re-watch lecture
+4. Do the homework
+5. Start your project!
+
 ## Homework
 
 * Implement edit and delete of customers
