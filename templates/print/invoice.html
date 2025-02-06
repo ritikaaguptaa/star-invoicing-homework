@@ -1,0 +1,46 @@
+<main>
+    <h1>Invoice {{ invoice.invoice_id }}</h1>
+
+    <h2>Customer: {{ invoice.customer.full_name }}</h2>
+
+    <h3>Address: {{ invoice.customer.address }}</h3>
+
+    <h4>Items</h4>
+
+    <ol>
+        {% for item in invoice.items %}
+        <li>
+            {{ item.item_name }} | {{ item.qty  }} * {{ item.rate }} = {{ item.amount }}
+        </li>
+        {% endfor %}
+    </ol>
+
+
+    
+    <p>Total Amount: {{ invoice.total_amount }}</p>
+    <p>Tax: {{ invoice.tax_percent }}%</p>
+
+    <hr>
+
+    <p class="display">Payable Amount: {{ invoice.payable_amount }}</p>
+</main>
+
+
+<style>
+    @page {
+        size: A4;
+        background-color: beige;
+    }
+
+
+    h1 {
+        color: #111;
+    }
+
+    .display {
+        font-size: 32px;
+        font-weight: bold;
+        color: #111;
+    }
+</style>
+

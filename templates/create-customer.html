@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+
+{% block body %}
+<h2>Create Customer</h2>
+
+<form class="m-5" action="/customers" method="post">
+
+    <div class="mb-3">
+        <label for="full_name" class="form-label">Full Name</label>
+        <input required type="text" name="full_name" class="form-control" id="full_name" placeholder="Full Name">
+    </div>
+    <div class="mb-3">
+        <label for="address" class="form-label">Address</label>
+        <textarea class="form-control" id="address" name="address" rows="3"></textarea>
+    </div>
+
+
+    <input class="btn btn-primary" type="submit" value="Save">
+</form>
+{% endblock %}
