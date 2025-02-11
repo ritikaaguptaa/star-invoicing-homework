@@ -12,11 +12,12 @@ class Customer(Model):
 
 class Invoice(Model):
     invoice_id = AutoField()
-    customer = ForeignKeyField(Customer)
+    customer = ForeignKeyField(Customer, backref='invoices', on_delete='CASCADE')
     date = DateField()
     total_amount = FloatField()
     tax_percent = FloatField()
     payable_amount = FloatField()
+    gov_arn = CharField(50, null=True)
     class Meta:
         database = db
 
@@ -26,6 +27,7 @@ class InvoiceItem(Model):
     rate = FloatField()
     amount = FloatField()
     invoice = ForeignKeyField(Invoice, backref="items", lazy_load=False)
-
     class Meta:
         database = db
+    
+    

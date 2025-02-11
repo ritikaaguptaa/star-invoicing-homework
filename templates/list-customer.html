@@ -1,9 +1,22 @@
 {% extends "base.html" %}
 
 {% block body %}
-<ul>
+<h3>Customer List</h3>
+<ul class="list-group">
     {% for customer in customers %}
-        <li>{{ customer.id }}. {{ customer.full_name }} | {{ customer.address }}</li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <span>
+                {{ customer.id }}. {{ customer.full_name }} | {{ customer.address }}
+            </span>
+            <div>
+               
+                <a href="/customers/{{ customer.id }}/edit" class="btn btn-sm btn-primary me-2">Edit</a>
+
+                <form action="/customers/{{ customer.id }}" method="post" class="d-inline">
+                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                </form>
+            </div>
+        </li>
     {% endfor %}
 </ul>
 {% endblock %}

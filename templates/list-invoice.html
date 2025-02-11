@@ -3,35 +3,36 @@
 {% block body %}
 
 <div class="d-flex justify-content-between">
-    <h3>Invoices</h3>
-    <a class="btn btn-primary" href="/new-invoice">+ New</a>
+  <h3>Invoices</h3>
+  <a class="btn btn-primary" href="/new-invoice">+ New</a>
 </div>
 
-<ol>
-    
-</ol>
-
-
 <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Customer Name</th>
-        <th scope="col">Payable Amount</th>
-        <th scope="col"></th>
-      </tr>
-    </thead>
-    <tbody>
-        {% for invoice in invoices %}
-        <tr>
-            <th scope="row">{{ invoice.invoice_id }}</th>
-            <td>{{ invoice.customer.full_name }}</td>
-            <td>₹{{ invoice.payable_amount }}</td>
-            <td>⬇️</td>
-        </tr>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Customer Name</th>
+      <th scope="col">Payable Amount</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for invoice in invoices %}
+    <tr>
+      <th scope="row">{{ invoice.invoice_id }}</th>
+      <td>{{ invoice.customer.full_name }}</td>
+      <td>₹{{ invoice.payable_amount }}</td>
+      <td>
+       
+        <a href="/invoices/{{ invoice.invoice_id }}/edit" class="btn btn-warning btn-sm">Edit</a>
+
+        <form action="/invoices/{{ invoice.invoice_id }}/delete" method="POST" style="display: inline;">
+          <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+        </form>
+      </td>
+    </tr>
     {% endfor %}
-      
-    </tbody>
-  </table>
+  </tbody>
+</table>
 
 {% endblock %}
